@@ -1,0 +1,45 @@
+.menu{
+    border:none;
+  }
+  .menu li a{
+    color:white;
+    text-decoration:none;
+  }
+  .menu ul{
+    list-style-type:none;
+    padding:0px;
+  }
+  .menu-title{
+    color:white;
+    border-bottom: 1px solid #161717;
+    padding:20px;
+  font-size:30px !important;
+    
+  } 
+.dashboard{
+  height:100vh;
+padding:0px;
+}
+
+.menu ul li{
+  border-bottom:1px solid #464747;
+ padding:20px;
+ font-size: 24px;
+ }
+.row .menu ul ul{
+  display:none;
+}
+.row  .menu li:hover ul{
+  display:block;
+}
+li a i{
+  padding-right:22px;
+}
+.body{
+  background-color:#f5f7f8;
+}
+
+.Ad-title{
+  background-color:white;
+  height:40px;
+}

@@ -1,0 +1,25 @@
+.login-bg{
+   
+   background-image: linear-gradient(125deg,#a72879,#064497);
+}
+.logo-badge {
+    color: #6f1c53;
+    font-size: 80px;
+    font-weight: 800;
+    
+}
+.login-btn {
+    background-image: linear-gradient(125deg,#a72879,#064497); 
+}
+.color-S{
+    color:#6d164d;
+}
+.form-outline{
+    border: 1px solid #6d164d;
+    border-radius: 5px;
+
+}
+.form-check-input{
+    border: 2px solid black;
+
+}

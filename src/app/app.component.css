@@ -1,0 +1,83 @@
+.menu{
+    border:none;
+  }
+  .menu li a{
+    color:white;
+    text-decoration:none;
+  }
+  .menu ul{
+    list-style-type:none;
+    padding:0px;
+  }
+  .menu-title{
+    color:white;
+    border-bottom: 1px solid #161717;
+    padding:20px;
+  font-size:25px !important;
+    
+  } 
+  .navbar-brand{
+    font-size:30px;
+    color:rgb(149, 199, 215);
+  }
+.dashboard{
+  height:100vh;
+padding:0px;
+}
+
+.menu ul li{
+  border-bottom:1px solid #464747;
+ padding:20px;
+ font-size: 22px;
+ }
+.row .menu ul ul{
+  display:none;
+}
+.row  .menu li:hover ul{
+  display:block;
+}
+li a i{
+  padding-right:22px;
+}
+.body{
+  background-color:#f5f7f8;
+}
+
+.Ad-title{
+  height:40px;
+
+}
+.fa-user, .dropdown-toggle{
+  color:white;
+}
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  width: 490px;
+}
+
+.example-button-row .mat-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}

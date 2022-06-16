@@ -1,2 +1,55 @@
+<div class="menu-nav">
+    <nav class="navbar navbar-dark bg-dark ">
+        <a class="navbar-brand">Administrator</a>
+        <form class="form-inline" >
+            <input class="form-control mr-sm-2" type="search" style="width:300px;" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-3" type="submit">Search</button>
+            <div class="Ad-title ">
+                <div style=" float:right;" class="dropdown ">
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user "></i></button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="">Đăng nhập</a>
+                        <a class="dropdown-item" href="">Đăng xuất</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+    </nav>
+</div>
+<div class="container-fluid body">
+    <div class="row">
+        <div class="col-sm-2,5 dashboard" style="background-color:rgb(30, 34, 40);">
+            <h3 class="menu-title"><i class="fas fa-bars"></i> Dashboard</h3>
+            <div class="menu">
+                <ul>
+                    <li><a href=""><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href=""><i class="far fa-user-circle"></i> Tài khoản</a></li>
+                    <li><a href=""><i class="fas fa-exchange-alt"></i> Thông tin liên thông <span><i
+                                    class="fas fa-angle-down"></i></span> </a>
+                        <ul>
+                            <li><a href=""> <i class="fas fa-paper-plane"></i> Gửi liên thông</a></li>
+                            <li><a href="">Nhận liên thông</a></li>
+                        </ul>
+                    </li>
+                    <li><a href=""> <i class="fas fa-chart-bar"></i> Thống kê liên thông</a></li>
 
-<router-outlet></router-outlet>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- -->
+        <div class="col">
+            <div class="">
+                <router-outlet></router-outlet>
+
+
+                <!--<mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>-->
+
+
+            </div>
+        </div>
+
+    </div>
+</div>

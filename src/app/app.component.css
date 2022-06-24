@@ -1,4 +1,4 @@
-.menu{
+/* .menu{
     border:none;
   }
   .menu li a{
@@ -80,4 +80,30 @@ section {
   display: flex;
   justify-content: center;
   width: 120px;
+} */
+.content-move-right {
+  margin-left: 170px !important;
+  transition: ease 0.2s;
+}
+
+.content-move-left {
+  margin-left: 10px !important;
+  transition: ease 0.1s;
+}
+.active {
+  background: gray;
+  color: white;
+}
+.mat-button:hover {
+  background: rgb(21 21 122);
+  color: white;
+  text-decoration:none;
+}
+.mat-button{
+  font-size:20px;
+}
+.btn-mess{
+  border:none;
+  background:none;
+  
 }

@@ -1,4 +1,4 @@
-<div class="menu-nav">
+<!-- <div class="menu-nav">
     <nav class="navbar navbar-dark bg-dark ">
         <a class="navbar-brand">Administrator</a>
         <form class="form-inline" >
@@ -8,7 +8,7 @@
                 <div style=" float:right;" class="dropdown ">
                     <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user "></i></button>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="">Đăng nhập</a>
+                        <a class="dropdown-item" routerLink="/login">Đăng nhập</a>
                         <a class="dropdown-item" href="">Đăng xuất</a>
                     </div>
                 </div>
@@ -39,17 +39,106 @@
 
         </div>
 
-        <!-- -->
+        
         <div class="col">
             <div class="">
                 <router-outlet></router-outlet>
 
 
-                <!--<mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>-->
+                 <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon> 
 
 
             </div>
         </div>
 
     </div>
-</div>
+</div> -->
+
+<mat-toolbar color="primary" class="nav-height">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon *ngIf="isLogin" (click)="openLeftSide()">menu</mat-icon>
+    </button>
+    <h1 style="font-size:30px;">Dashboard</h1>
+    <span class="menu-spacer" style="width: 100px;"></span>
+    <div >
+      <a mat-button [routerLink]="['/home']" [routerLinkActive]="'active'"> Home </a>
+      <ng-container *ngIf="isLogin">
+        <a mat-button [routerLink]="['/login']" [routerLinkActive]="'active'">Tài khoản </a>
+
+        <button   mat-button [matMenuTriggerFor]="menu" [routerLinkActive]="'active'"> Thông tin liên thông
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item [routerLink]="['/sendmess']">Gửi liên thông </button>
+          <button mat-menu-item [routerLink]="['/receivemess']">Nhận liên thông</button>
+        </mat-menu>
+        <a   mat-button [routerLink]="['/about']" [routerLinkActive]="'active'">Thống kê liên thông</a>
+  
+      </ng-container>
+
+      <div style="position: absolute; right: 0px; top: 15px;" class="dropdown user-control">
+        <button style="color: white;" type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+          <i class="fas fa-user "></i>
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" routerLink="/login">Đăng nhập</a>
+            <a class="dropdown-item" (click)="userLogout()">Đăng xuất</a>
+        </div>
+    </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav (closed)="closeLeftSide()">
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="">
+        <mat-icon mat-list-icon>home</mat-icon> Home
+      </a>
+      <a mat-list-item [routerLink]="">
+        <mat-icon>account_circle</mat-icon>Tài khoản
+      </a>
+      <!-- toggle -->
+      <div>
+        <a mat-list-item [routerLink]="['/home']">
+          <mat-icon>assessment</mat-icon> Thông tin liên thông
+
+          <button class="btn-mess" type="button" data-toggle="collapse" data-target="#collapseExample"
+            aria-expanded="false" aria-controls="collapseExample">
+            <mat-icon>expand_more</mat-icon>
+          </button>
+        </a>
+
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <button mat-menu-item [routerLink]="['/sendmess']">Gửi liên thông</button>
+            <button mat-menu-item [routerLink]="['/receivemess']">Nhận liên thông</button>
+          </div>
+        </div>
+      </div>
+
+      <a mat-list-item [routerLink]="['/login']">
+        <mat-icon> bar_chart</mat-icon> Thống kê liên thông
+      </a>
+      <a mat-list-item (click)="sidenav.toggle()" mat-list-item>
+        <mat-icon>close</mat-icon> Đóng
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="
+        height: 90vh;
+        margin-top: 20px;
+        margin-right: 10px;
+        margin-left: 10px;
+      " [ngClass]="{
+        'content-move-left': !isOpened,
+        'content-move-right': isOpened
+      }">
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+      
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

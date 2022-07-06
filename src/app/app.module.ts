@@ -12,6 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import  { LoginComponent } from './modules/component/login/login.component';
 import { SendMessComponent } from './modules/component/sendMess/sendMess.component';
 import { ReceiveMessComponent } from './modules/component/receiveMess/receiveMess.component';
+import { StatisticalComponent } from './modules/component/statistical/statistical.component';
+//import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -20,8 +22,10 @@ import { ReceiveMessComponent } from './modules/component/receiveMess/receiveMes
     MenuComponent,
     LoginComponent,
     SendMessComponent,
-    ReceiveMessComponent
+    ReceiveMessComponent,
+    StatisticalComponent
   ],
+  entryComponents: [LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,7 +34,7 @@ import { ReceiveMessComponent } from './modules/component/receiveMess/receiveMes
     SharedModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule, 
      
   ],
   providers: [],

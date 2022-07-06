@@ -1,0 +1,21 @@
+.bg-thead{
+    background-color:rgb(69, 69, 149);
+    color:white;
+}
+.input-date{
+    height:35px;
+    width:150px;
+}
+.btn-clear{
+    border:1px solid black;
+    height:35px;
+    width:60px;
+    background-color:rgb(80, 80, 168);
+    color:white;
+}
+h1{
+   font-weight: bold; 
+   padding-top: 20px;
+  
+   
+}

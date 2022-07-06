@@ -1,94 +1,53 @@
-<!-- <div class="menu-nav">
-    <nav class="navbar navbar-dark bg-dark ">
-        <a class="navbar-brand">Administrator</a>
-        <form class="form-inline" >
-            <input class="form-control mr-sm-2" type="search" style="width:300px;" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-3" type="submit">Search</button>
-            <div class="Ad-title ">
-                <div style=" float:right;" class="dropdown ">
-                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user "></i></button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" routerLink="/login">Đăng nhập</a>
-                        <a class="dropdown-item" href="">Đăng xuất</a>
-                    </div>
-                </div>
-            </div>
-        </form>
-        
-    </nav>
-</div>
-<div class="container-fluid body">
-    <div class="row">
-        <div class="col-sm-2,5 dashboard" style="background-color:rgb(30, 34, 40);">
-            <h3 class="menu-title"><i class="fas fa-bars"></i> Dashboard</h3>
-            <div class="menu">
-                <ul>
-                    <li><a href=""><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href=""><i class="far fa-user-circle"></i> Tài khoản</a></li>
-                    <li><a href=""><i class="fas fa-exchange-alt"></i> Thông tin liên thông <span><i
-                                    class="fas fa-angle-down"></i></span> </a>
-                        <ul>
-                            <li><a href=""> <i class="fas fa-paper-plane"></i> Gửi liên thông</a></li>
-                            <li><a href="">Nhận liên thông</a></li>
-                        </ul>
-                    </li>
-                    <li><a href=""> <i class="fas fa-chart-bar"></i> Thống kê liên thông</a></li>
 
-                </ul>
-            </div>
-
-        </div>
-
-        
-        <div class="col">
-            <div class="">
-                <router-outlet></router-outlet>
-
-
-                 <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon> 
-
-
-            </div>
-        </div>
-
-    </div>
-</div> -->
-
-<mat-toolbar color="primary" class="nav-height">
-  <mat-toolbar-row>
+<mat-toolbar color="primary" class="nav-height" class="shadow-toolbar">
+  <mat-toolbar-row >
     <button mat-icon-button>
       <mat-icon *ngIf="isLogin" (click)="openLeftSide()">menu</mat-icon>
     </button>
-    <h1 style="font-size:30px;">Dashboard</h1>
+    
     <span class="menu-spacer" style="width: 100px;"></span>
-    <div >
-      <a mat-button [routerLink]="['/home']" [routerLinkActive]="'active'"> Home </a>
+    <div>
+      <a mat-button [routerLink]="['']" [routerLinkActive]="'active'"> Home </a>
       <ng-container *ngIf="isLogin">
         <a mat-button [routerLink]="['/login']" [routerLinkActive]="'active'">Tài khoản </a>
 
-        <button   mat-button [matMenuTriggerFor]="menu" [routerLinkActive]="'active'"> Thông tin liên thông
+        <button mat-button [matMenuTriggerFor]="menu" [routerLinkActive]="'active'"> Thông tin liên thông
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item [routerLink]="['/sendmess']">Gửi liên thông </button>
           <button mat-menu-item [routerLink]="['/receivemess']">Nhận liên thông</button>
         </mat-menu>
-        <a   mat-button [routerLink]="['/about']" [routerLinkActive]="'active'">Thống kê liên thông</a>
-  
+        <a mat-button [routerLink]="['/statistical']" [routerLinkActive]="'active'">Thống kê liên thông</a>
+
       </ng-container>
 
+      
+
       <div style="position: absolute; right: 0px; top: 15px;" class="dropdown user-control">
-        <button style="color: white;" type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-          <i class="fas fa-user "></i>
-        </button>
-        <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" routerLink="/login">Đăng nhập</a>
-            <a class="dropdown-item" (click)="userLogout()">Đăng xuất</a>
+
+        <div class="search"  style="float:left;">
+          <form action="">
+            <input  style="  border: none;" type="text" placeholder="Search..." name="search">
+            
+            <button style="  border: none;" type="submit"><i class="fa fa-search"></i></button>
+          </form>
         </div>
-    </div>
+        &nbsp;&nbsp;
+          <button class="btn-user" style="border:none ;background-color: rgb(28, 35, 123); color: white;" type="button"
+            class="btn dropdown-toggle" data-toggle="dropdown">
+            <i class="fas fa-user "></i> Sign in
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" (click)="openDialog()">Đăng nhập</a>
+            <a class="dropdown-item" (click)="userLogout()">Đăng xuất</a>
+          </div>
+      
+      </div>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
 
+<!--thanh menu doc xo xuong -->
 <mat-sidenav-container>
   <mat-sidenav #sidenav (closed)="closeLeftSide()">
     <mat-nav-list>
@@ -98,7 +57,7 @@
       <a mat-list-item [routerLink]="">
         <mat-icon>account_circle</mat-icon>Tài khoản
       </a>
-      <!-- toggle -->
+      <!-- toggle routerLink="/login"-->
       <div>
         <a mat-list-item [routerLink]="['/home']">
           <mat-icon>assessment</mat-icon> Thông tin liên thông
@@ -128,17 +87,15 @@
   <mat-sidenav-content>
     <div style="
         height: 90vh;
-        margin-top: 20px;
-        margin-right: 10px;
-        margin-left: 10px;
       " [ngClass]="{
-        'content-move-left': !isOpened,
+        'content-move-left': !isOpened, 
         'content-move-right': isOpened
       }">
-      <div class="container">
+<!-- neu open thi di chuyen sang phai -->
+      <div class="">
         <router-outlet></router-outlet>
       </div>
-      
+
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

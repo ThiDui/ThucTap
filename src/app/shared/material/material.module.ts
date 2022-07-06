@@ -11,6 +11,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTreeModule} from '@angular/material/tree';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSortModule} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -27,7 +32,11 @@ import {MatTreeModule} from '@angular/material/tree';
     MatToolbarModule,
     MatListModule,
     MatMenuModule,
-    MatTreeModule
+    MatTreeModule,
+    MatDialogModule,
+    MatSortModule,
+    MatPaginatorModule,
+    NgxPaginationModule
   ]
 })
 export class MaterialModule { }

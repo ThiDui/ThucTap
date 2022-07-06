@@ -1,51 +1,49 @@
 
-<table class="table">
-  <thead>
+<h1>Thông tin nhận</h1>
+<hr>
+<div style="text-align:right;padding-right:30px;">
+  <input type="date" [(ngModel)]="filterDate" class="input-date"/>
+  <button type="button" (click)="clearFilter()" class="btn-clear" >Clear</button>
+</div><br>
+<table class="table table-striped">
+  <thead class="bg-thead">
     <tr>
       <th>ID</th>
-      <th>Tiêu đề</th>
       <th>Loại</th>
+      <th>Nội dung</th>
       <th>Trạng thái</th>
       <th>Nơi nhận</th>
       <th>Ngày nhận</th>
-      <th>Ngày hoàn thành</th>
       <th>Tùy chọn</th>
     </tr>
   </thead>
   <tbody>
+    <ng-container *ngFor="let item of receive | paginate: { itemsPerPage: 5, currentPage: page, totalItems: totalLength }">
+      <ng-container *ngIf="!filterDate || filterDate===item?.gtn_ngaynhan">
     <tr>
-      <td>John</td>
-      <td>Doe</td>
-      <td>john@example.com</td>
-      <td>John</td>
-      <td>Doe</td>
-      <td>john@example.com</td>
-      <td>John</td>
+      <td>{{item?.gtn_id}}</td>
+      <td>{{item?.message?.categories?.lyc_ten}}</td>
+      <td>{{item?.message?.gt_noidung}}</td>
+      <td>
+        <ng-container *ngIf="item?.message?.gt_trangthai === 'chưa thực hiện'">
+          <button type="button" class="btn btn-danger btn-sm">{{item?.message?.gt_trangthai}}</button>
+        </ng-container>
+        <ng-container *ngIf="item?.message?.gt_trangthai === 'Đang thực hiện'">
+          <button type="button" class="btn btn-primary btn-sm">{{item?.message?.gt_trangthai}}</button>
+        </ng-container>
+        <ng-container *ngIf="item?.message?.gt_trangthai === 'Đã hoàn thành'">
+          <button type="button" class="btn btn-success btn-sm">{{item?.message?.gt_trangthai}}</button>
+        </ng-container>
+      </td>
+      <!-- <td>{{item?.message?.gt_trangthai}}</td> -->
+      <td>{{item?.gtn_noinhan}}</td>
+      <td>{{item?.gtn_ngaynhan}}</td>
       <td><button mat-raised-button color="primary">Delete</button></td>
    
     </tr>
-    <tr>
-      <td>Mary</td>
-      <td>Moe</td>
-      <td>mary@example.com</td>
-      <td>John</td>
-      <td>Doe</td>
-      <td>john@example.com</td>
-      <td>John</td>
-      <td><button mat-raised-button color="primary">Delete</button></td>
-     
-    </tr>
-    <tr>
-      <td>July</td>
-      <td>Dooley</td>
-      <td>july@example.com</td>
-      <td>John</td>
-      <td>Doe</td>
-      <td>john@example.com</td>
-      <td>John</td>
-      <td><button mat-raised-button color="primary">Delete</button></td>
-     
-    </tr>
+  </ng-container>
+    </ng-container>
   </tbody>
 </table>
+<pagination-controls (pageChange)="page = $event" class="text-center"></pagination-controls>
 
